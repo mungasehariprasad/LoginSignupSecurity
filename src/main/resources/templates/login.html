@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:replace="base::layout(~{::section})"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Login page</title>
+    </head>
+    <body>
+        <section>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                Login Here
+                            </div>
+                            <th:block th:if="${param.error}">
+                                <p class="text-center text-danger fs-5">
+                                    [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                                </p>
+                            </th:block>
+                            <th:block th:if="${param.logout}">
+                                <p class="text-center text-success fs-5">
+                                    Logout successfully !!
+                                </p>
+                            </th:block>
+
+                            <div class="card-body">
+                                <form action="userLogin" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Email address</label
+                                        >
+                                        <input
+                                            type="email"
+                                            name="username"
+                                            class="form-control"
+                                            aria-describedby="emailHelp"
+                                        />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            name="password"
+                                            class="form-control"
+                                        />
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Login
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

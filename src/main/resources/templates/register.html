@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:replace="base::layout(~{::section})"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Register page</title>
+    </head>
+    <body>
+        <section>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                Register Here
+                            </div>
+                            <th:block th:if="${session.msg}">
+                                <p class="text-center text-success">
+                                    [[${session.msg}]]
+                                </p>
+                                <th:block
+                                    th:text="${@userServiceImp.removeSessionMessage()}"
+                                ></th:block>
+                            </th:block>
+                            <div class="card-body">
+                                <form action="saveUser" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Full Name</label
+                                        >
+                                        <input
+                                            type="text"
+                                            placeholder="Enter FullName"
+                                            name="fullname"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Email address</label
+                                        >
+                                        <input
+                                            type="email"
+                                            placeholder="Enter Email"
+                                            name="email"
+                                            class="form-control"
+                                            aria-describedby="emailHelp"
+                                        />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Mobile Number</label
+                                        >
+                                        <input
+                                            type="number"
+                                            name="mobileno"
+                                            placeholder="Enter Mobile No"
+                                            class="form-control"
+                                        />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"
+                                            >Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            placeholder="Enter Password"
+                                            name="password"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input"
+                                            id="exampleCheck1"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="exampleCheck1"
+                                            >Check me out</label
+                                        >
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary"
+                                    >
+                                        Register
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
